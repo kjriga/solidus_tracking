@@ -14,6 +14,10 @@ gem 'rails', '>0.a'
 # Provides basic authentication functionality for testing parts of your engine
 gem 'solidus_auth_devise'
 
+# This is locked to fix a 'SystemStackError (stack level too deep)' error.
+# See issue here: https://github.com/solidusio/solidus/issues/6326
+gem 'state_machines', '0.6.0'
+
 case ENV['DB']
 when 'mysql'
   gem 'mysql2'
