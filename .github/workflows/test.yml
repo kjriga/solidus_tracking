@@ -58,6 +58,9 @@ jobs:
           rails-version: ${{ matrix.rails-version }}
           ruby-version: ${{ matrix.ruby-version }}
           solidus-branch: ${{ matrix.solidus-branch }}
+      - name: Run migrations for dummy app
+        run: |
+          bin/rails db:migrate RAILS_ENV=test || bundle exec rails db:migrate RAILS_ENV=test
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
         continue-on-error: true
